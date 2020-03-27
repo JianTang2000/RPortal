@@ -3,12 +3,10 @@ package com.tang.billing.demoprovider.serviceimpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tang.api.billing.HelloService;
 import com.tang.api.profile.HelloServiceProf;
-import com.tang.billing.demoprovider.domain.AcctRepository;
 
 /**
  * < >
@@ -27,20 +25,6 @@ public class HelloServiceImpl implements HelloService {
     @Autowired
     HelloServiceProf helloServiceProf;
 
-    /**
-     *  < 多实现指定bean名的注入 >
-     */
-    @Autowired
-    @Qualifier("acctRepositoryImpl")
-    AcctRepository acctRepository;
-
-    /**
-     *  < 多实现指定bean名的注入 >
-     */
-    @Autowired
-    @Qualifier("acctRepositoryImpl2")
-    AcctRepository acctRepository2;
-
     @Override
     public String sayHello(String name) {
         String showInfo =
@@ -57,7 +41,7 @@ public class HelloServiceImpl implements HelloService {
     }
 
     @Override
-    public void testProfileLink(String info) throws Exception {
+    public void testProfileLink(String info) {
         logger.info(helloServiceProf.sayHello(info));
     }
 
@@ -65,13 +49,10 @@ public class HelloServiceImpl implements HelloService {
      * < 注入调用Repository > <br>
      *
      * @param info < >
-     * @throws Exception <br>
      * @auther: tang.jian
      */
     @Override
-    public void testRepository(String info) throws Exception {
-        acctRepository.showHelloInfo(info);
-        acctRepository2.showHelloInfo(info);
+    public void testRepository(String info) {
     }
 
 }

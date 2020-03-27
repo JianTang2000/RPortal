@@ -12,21 +12,4 @@
     <dubbo:reference id="HelloServiceProf"
                      interface="com.tang.api.profile.HelloServiceProf"
                      timeout="999999" check="false"></dubbo:reference>
-
-    <dubbo:reference id="DemoResourceService"
-                     interface="com.tang.api.profile.DemoResourceService"
-                     timeout="999999" check="false"></dubbo:reference>
-
-    <dubbo:reference id="DemoUserService"
-                     interface="com.tang.api.profile.DemoUserService"
-                     timeout="999999" check="false"></dubbo:reference>
-
-    <dubbo:reference id="DemoPersonService"
-                     interface="com.tang.api.profile.DemoPersonService"
-                     timeout="999999" check="false"></dubbo:reference>
-
-    <dubbo:reference id="LocalCacheService"
-                     interface="com.tang.api.profile.LocalCacheService"
-                     timeout="999999" check="false"></dubbo:reference>
-
 </beans>

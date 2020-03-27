@@ -17,14 +17,5 @@ public interface HelloServiceProf {
      */
     String sayHello(String name);
 
-    /**
-     *  < getSeq > <br>
-     *
-     * @auther: tang
-     * @param name < >
-     * @return < seq >
-     *
-     */
-    Long getSeq(String name);
 
 }

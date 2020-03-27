@@ -9,8 +9,6 @@
     http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <dubbo:reference id="AuditThemeService"
-                     interface="com.tang.api.billing.AuditThemeService"
-                     timeout="999999" check="false"></dubbo:reference>
+
 
 </beans>

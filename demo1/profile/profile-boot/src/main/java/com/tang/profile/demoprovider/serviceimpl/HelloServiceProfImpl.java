@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.tang.api.profile.HelloServiceProf;
-import com.tang.base.util.sequenceutil.SequenceUtil;
 
 /**
  * < >
@@ -32,9 +31,4 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         logger.info(showInfo);
         return showInfo;
     }
-
-    @Override public Long getSeq(String name) {
-        return SequenceUtil.next(name);
-    }
-
 }

@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tang.param.profile.DemoPersonParam;
 
 /**
  * < 公共的工具类，可以在各个业务中心被调用， 以类名.方法名的形式调用。 各个业务中心的pom里面引用了base这个项目，打包的时候base会被打到每个业务中心的里面取，

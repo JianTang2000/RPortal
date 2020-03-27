@@ -14,23 +14,5 @@
     <dubbo:service
             interface="com.tang.api.profile.HelloServiceProf"
             ref="HelloServiceProf"/>
-    <dubbo:service
-            interface="com.tang.api.profile.AcctService"
-            ref="AcctService"/>
-    <dubbo:service
-            interface="com.tang.api.profile.OpusDetailService"
-            ref="opusDetailService"/>
-    <dubbo:service
-            interface="com.tang.api.profile.DemoPersonService"
-            ref="DemoPersonService"/>
-    <dubbo:service
-            interface="com.tang.api.profile.DemoResourceService"
-            ref="DemoResourceService"/>
-    <dubbo:service
-            interface="com.tang.api.profile.DemoUserService"
-            ref="DemoUserService"/>
-    <dubbo:service
-            interface="com.tang.api.profile.LocalCacheService"
-            ref="LocalCacheService"/>
 
 </beans>

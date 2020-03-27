@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ImportResource;
 // 定义非dubbo服务，但也要注册bean的文件的包的扫描路径，多个用逗号分隔
 // 考虑到后面应该会把mybatis的配置放到这个扫描里面
 @ComponentScan(basePackages = {
-    "com.tang.billing.demoprovider", "com.tang.base"
+    "com.tang.billing.demoprovider","com.tang.base"
 })
 public class DemoBillingApplicationStart {
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class DemoBillingApplicationStart {
          */
         final Logger logger = LoggerFactory.getLogger(EmbeddedZooKeeper.class);
         logger.debug("========================================================");
-        logger.debug("======================DemoApplication============================");
+        logger.debug("======================BillingApplication============================");
         logger.debug("========================================================");
         // start embedded zookeeper server
         // 这里的EmbeddedZooKeeper的port，我暂时的理解是这个服务的端口，
