@@ -1,6 +1,7 @@
 package com.tang.billing.demo;
 
 
+import com.tang.api.billing.OutAPIService;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,17 +15,17 @@ import com.tang.billing.demo.testBase.DemoBillingApplicationStartTests;
  * @author tang.jian<br>
  * @CreateDate 2018/9/26 <br>
  */
-public class HelloServiceImplTets extends DemoBillingApplicationStartTests {
+public class OutAPIServiceImplTets extends DemoBillingApplicationStartTests {
     /**
      * < 日志 >
      */
-    private Logger logger = LoggerFactory.getLogger(HelloServiceImplTets.class);
+    private Logger logger = LoggerFactory.getLogger(OutAPIServiceImplTets.class);
 
     /**
      * < >
      */
     @Autowired
-    private com.tang.api.billing.HelloService helloService;
+    private OutAPIService outAPIService;
 
     @Test
     public void rua() throws Exception {

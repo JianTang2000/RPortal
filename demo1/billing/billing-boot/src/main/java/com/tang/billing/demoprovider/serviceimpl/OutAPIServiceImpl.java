@@ -1,23 +1,26 @@
 package com.tang.billing.demoprovider.serviceimpl;
 
+import com.tang.param.billing.Iris;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tang.api.billing.HelloService;
+import com.tang.api.billing.OutAPIService;
 import com.tang.api.profile.HelloServiceProf;
+
+import java.util.List;
 
 /**
  * < >
  */
 @Service("HelloService")
-public class HelloServiceImpl implements HelloService {
+public class OutAPIServiceImpl implements OutAPIService {
 
     /**
      * < 日志 >
      */
-    private Logger logger = LoggerFactory.getLogger(HelloServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(OutAPIServiceImpl.class);
 
     /**
      * < 其他中心的dubbo服务的注入 >
@@ -41,18 +44,9 @@ public class HelloServiceImpl implements HelloService {
     }
 
     @Override
-    public void testProfileLink(String info) {
-        logger.info(helloServiceProf.sayHello(info));
+    public List<Iris> irisTree(List<Iris> param) {
+        return helloServiceProf.irisTree(param);
     }
 
-    /**
-     * < 注入调用Repository > <br>
-     *
-     * @param info < >
-     * @auther: tang.jian
-     */
-    @Override
-    public void testRepository(String info) {
-    }
 
 }

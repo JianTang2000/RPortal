@@ -98,15 +98,6 @@
         </dependency>
 
 
-
-
-<!--        &lt;!&ndash; 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>commons-dbcp</groupId>-->
-<!--            <artifactId>commons-dbcp</artifactId>-->
-<!--            <version>1.2.2</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>

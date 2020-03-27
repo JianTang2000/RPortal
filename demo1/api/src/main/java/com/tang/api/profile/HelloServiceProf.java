@@ -1,5 +1,9 @@
 package com.tang.api.profile;
 
+import com.tang.param.billing.Iris;
+
+import java.util.List;
+
 /**
  * < ><br>
  *
@@ -17,5 +21,6 @@ public interface HelloServiceProf {
      */
     String sayHello(String name);
 
+    List<Iris> irisTree(List<Iris> param);
 
 }
