@@ -1,6 +1,7 @@
 package com.tang.api.billing;
 
 import com.tang.param.billing.Iris;
+import com.tang.param.billing.Model;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public interface OutAPIService {
     String sayHello(String name);
 
     List<Iris> irisTree(List<Iris> param);
+
+    List<Model> ModelList();
 
 
 }

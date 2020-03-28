@@ -1,6 +1,7 @@
 package com.tang.billing.demoprovider.serviceimpl;
 
 import com.tang.param.billing.Iris;
+import com.tang.param.billing.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class OutAPIServiceImpl implements OutAPIService {
     @Override
     public List<Iris> irisTree(List<Iris> param) {
         return helloServiceProf.irisTree(param);
+    }
+
+    @Override
+    public List<Model> ModelList() {
+        return null;
     }
 
 

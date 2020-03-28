@@ -54,4 +54,19 @@ public class ServerProviderController {
         }
     }
 
+    //return all existing model, and their API  detail
+    @PutMapping("Model/List")
+    public Map<String, Object> ModelList() {
+        logger.info("irisTree (based on rpart) start at {} (ms) ", System.currentTimeMillis());
+        List<String> result = null;
+        if (ValidateUtil.validateNotEmpty(result)) {
+            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
+            return Json.success(result);
+        }
+        else {
+            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
+            return Json.fail(result);
+        }
+    }
+
 }

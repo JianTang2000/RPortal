@@ -17,6 +17,16 @@ public class Iris {
     private double Petal_Length;
     private double Petal_Width;
 
+//    private String specialInfo;
+//
+//    public String getSpecialInfo() {
+//        return specialInfo;
+//    }
+//
+//    public void setSpecialInfo(String specialInfo) {
+//        this.specialInfo = specialInfo;
+//    }
+
     public String getSpecies() {
         return Species;
     }
