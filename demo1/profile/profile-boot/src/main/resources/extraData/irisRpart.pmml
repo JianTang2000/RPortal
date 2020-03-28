@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<PMML version="4.4" xmlns="http://www.dmg.org/PMML-4_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_3 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
+<PMML version="4.4" xmlns="http://www.dmg.org/PMML-4_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_4 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
  <Header copyright="Copyright (c) 2020 Kent" description="RPart Decision Tree Model">
   <Extension name="user" value="Kent" extender="SoftwareAG PMML Generator"/>
   <Application name="SoftwareAG PMML Generator" version="2.3.0"/>
-  <Timestamp>2020-03-27 20:17:52</Timestamp>
+  <Timestamp>2020-03-28 07:31:11</Timestamp>
  </Header>
  <DataDictionary numberOfFields="5">
   <DataField name="Species" optype="categorical" dataType="string">

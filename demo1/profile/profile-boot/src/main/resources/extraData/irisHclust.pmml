@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<PMML version="4.4" xmlns="http://www.dmg.org/PMML-4_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_4 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
+ <Header copyright="Copyright (c) 2020 Kent" description="Hierarchical Cluster Model">
+  <Extension name="user" value="Kent" extender="SoftwareAG PMML Generator"/>
+  <Application name="SoftwareAG PMML Generator" version="2.3.0"/>
+  <Timestamp>2020-03-28 07:45:15</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="4">
+  <DataField name="Sepal.Length" optype="continuous" dataType="double"/>
+  <DataField name="Sepal.Width" optype="continuous" dataType="double"/>
+  <DataField name="Petal.Length" optype="continuous" dataType="double"/>
+  <DataField name="Petal.Width" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <ClusteringModel modelName="HClust_Model" functionName="clustering" algorithmName="HClust" modelClass="centerBased" numberOfClusters="3">
+  <MiningSchema>
+   <MiningField name="Sepal.Length" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Sepal.Width" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Petal.Length" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Petal.Width" invalidValueTreatment="returnInvalid"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="predictedValue" feature="predictedValue"/>
+  </Output>
+  <ComparisonMeasure kind="distance">
+   <squaredEuclidean/>
+  </ComparisonMeasure>
+  <ClusteringField field="Sepal.Length"/>
+  <ClusteringField field="Sepal.Width"/>
+  <ClusteringField field="Petal.Length"/>
+  <ClusteringField field="Petal.Width"/>
+  <Cluster name="1">
+   <Array n="4" type="real">5.006 3.428 1.462 0.246</Array>
+  </Cluster>
+  <Cluster name="2">
+   <Array n="4" type="real">6.54583333333333 2.96388888888889 5.27361111111111 1.85</Array>
+  </Cluster>
+  <Cluster name="3">
+   <Array n="4" type="real">5.53214285714286 2.63571428571429 3.96071428571429 1.22857142857143</Array>
+  </Cluster>
+ </ClusteringModel>
+</PMML>

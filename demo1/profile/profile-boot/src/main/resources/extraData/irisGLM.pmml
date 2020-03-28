@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<PMML version="4.4" xmlns="http://www.dmg.org/PMML-4_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_4 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
+ <Header copyright="Copyright (c) 2020 Kent" description="Generalized Linear Regression Model">
+  <Extension name="user" value="Kent" extender="SoftwareAG PMML Generator"/>
+  <Application name="SoftwareAG PMML Generator" version="2.3.0"/>
+  <Timestamp>2020-03-28 07:44:49</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="5">
+  <DataField name="Adjusted" optype="continuous" dataType="double"/>
+  <DataField name="Age" optype="continuous" dataType="double"/>
+  <DataField name="Employment" optype="categorical" dataType="string">
+   <Value value="Consultant"/>
+   <Value value="Private"/>
+   <Value value="PSFederal"/>
+   <Value value="PSLocal"/>
+   <Value value="PSState"/>
+   <Value value="SelfEmp"/>
+   <Value value="Volunteer"/>
+  </DataField>
+  <DataField name="Education" optype="categorical" dataType="string">
+   <Value value="Associate"/>
+   <Value value="Bachelor"/>
+   <Value value="College"/>
+   <Value value="Doctorate"/>
+   <Value value="HSgrad"/>
+   <Value value="Master"/>
+   <Value value="Preschool"/>
+   <Value value="Professional"/>
+   <Value value="Vocational"/>
+   <Value value="Yr10"/>
+   <Value value="Yr11"/>
+   <Value value="Yr12"/>
+   <Value value="Yr1t4"/>
+   <Value value="Yr5t6"/>
+   <Value value="Yr7t8"/>
+   <Value value="Yr9"/>
+  </DataField>
+  <DataField name="Income" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <GeneralRegressionModel modelName="General_Regression_Model" modelType="generalizedLinear" functionName="regression" algorithmName="glm" distribution="binomial" linkFunction="logit">
+  <MiningSchema>
+   <MiningField name="Adjusted" usageType="predicted" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Age" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Employment" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Education" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="Income" usageType="active" invalidValueTreatment="returnInvalid"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Predicted_Adjusted" feature="predictedValue" optype="continuous" dataType="double"/>
+  </Output>
+  <ParameterList>
+   <Parameter name="p0" label="(Intercept)"/>
+   <Parameter name="p1" label="Age"/>
+   <Parameter name="p2" label="EmploymentPrivate"/>
+   <Parameter name="p3" label="EmploymentPSFederal"/>
+   <Parameter name="p4" label="EmploymentPSLocal"/>
+   <Parameter name="p5" label="EmploymentPSState"/>
+   <Parameter name="p6" label="EmploymentSelfEmp"/>
+   <Parameter name="p7" label="EmploymentVolunteer"/>
+   <Parameter name="p8" label="EducationBachelor"/>
+   <Parameter name="p9" label="EducationCollege"/>
+   <Parameter name="p10" label="EducationDoctorate"/>
+   <Parameter name="p11" label="EducationHSgrad"/>
+   <Parameter name="p12" label="EducationMaster"/>
+   <Parameter name="p13" label="EducationPreschool"/>
+   <Parameter name="p14" label="EducationProfessional"/>
+   <Parameter name="p15" label="EducationVocational"/>
+   <Parameter name="p16" label="EducationYr10"/>
+   <Parameter name="p17" label="EducationYr11"/>
+   <Parameter name="p18" label="EducationYr12"/>
+   <Parameter name="p19" label="EducationYr1t4"/>
+   <Parameter name="p20" label="EducationYr5t6"/>
+   <Parameter name="p21" label="EducationYr7t8"/>
+   <Parameter name="p22" label="EducationYr9"/>
+   <Parameter name="p23" label="Income"/>
+  </ParameterList>
+  <FactorList>
+   <Predictor name="Employment"/>
+   <Predictor name="Education"/>
+  </FactorList>
+  <CovariateList>
+   <Predictor name="Age"/>
+   <Predictor name="Income"/>
+  </CovariateList>
+  <PPMatrix>
+   <PPCell value="1" predictorName="Age" parameterName="p1"/>
+   <PPCell value="Private" predictorName="Employment" parameterName="p2"/>
+   <PPCell value="PSFederal" predictorName="Employment" parameterName="p3"/>
+   <PPCell value="PSLocal" predictorName="Employment" parameterName="p4"/>
+   <PPCell value="PSState" predictorName="Employment" parameterName="p5"/>
+   <PPCell value="SelfEmp" predictorName="Employment" parameterName="p6"/>
+   <PPCell value="Volunteer" predictorName="Employment" parameterName="p7"/>
+   <PPCell value="Bachelor" predictorName="Education" parameterName="p8"/>
+   <PPCell value="College" predictorName="Education" parameterName="p9"/>
+   <PPCell value="Doctorate" predictorName="Education" parameterName="p10"/>
+   <PPCell value="HSgrad" predictorName="Education" parameterName="p11"/>
+   <PPCell value="Master" predictorName="Education" parameterName="p12"/>
+   <PPCell value="Preschool" predictorName="Education" parameterName="p13"/>
+   <PPCell value="Professional" predictorName="Education" parameterName="p14"/>
+   <PPCell value="Vocational" predictorName="Education" parameterName="p15"/>
+   <PPCell value="Yr10" predictorName="Education" parameterName="p16"/>
+   <PPCell value="Yr11" predictorName="Education" parameterName="p17"/>
+   <PPCell value="Yr12" predictorName="Education" parameterName="p18"/>
+   <PPCell value="Yr1t4" predictorName="Education" parameterName="p19"/>
+   <PPCell value="Yr5t6" predictorName="Education" parameterName="p20"/>
+   <PPCell value="Yr7t8" predictorName="Education" parameterName="p21"/>
+   <PPCell value="Yr9" predictorName="Education" parameterName="p22"/>
+   <PPCell value="1" predictorName="Income" parameterName="p23"/>
+  </PPMatrix>
+  <ParamMatrix>
+   <PCell parameterName="p0" df="1" beta="-3.55095928179326"/>
+   <PCell parameterName="p1" df="1" beta="0.0516465279468266"/>
+   <PCell parameterName="p2" df="1" beta="0.705575875913056"/>
+   <PCell parameterName="p3" df="1" beta="0.17988986128722"/>
+   <PCell parameterName="p4" df="1" beta="0.698993793354742"/>
+   <PCell parameterName="p5" df="1" beta="0.388200083368991"/>
+   <PCell parameterName="p6" df="1" beta="1.81951015385574"/>
+   <PCell parameterName="p7" df="1" beta="-17.9193878445825"/>
+   <PCell parameterName="p8" df="1" beta="0.943014708535344"/>
+   <PCell parameterName="p9" df="1" beta="-0.934233014035156"/>
+   <PCell parameterName="p10" df="1" beta="0.904997989751655"/>
+   <PCell parameterName="p11" df="1" beta="-1.78019320777711"/>
+   <PCell parameterName="p12" df="1" beta="1.17855748706977"/>
+   <PCell parameterName="p13" df="1" beta="-17.3138695409933"/>
+   <PCell parameterName="p14" df="1" beta="1.5284706736892"/>
+   <PCell parameterName="p15" df="1" beta="-0.732390091075384"/>
+   <PCell parameterName="p16" df="1" beta="-3.04524098208694"/>
+   <PCell parameterName="p17" df="1" beta="-16.9451456069876"/>
+   <PCell parameterName="p18" df="1" beta="0.191689752846116"/>
+   <PCell parameterName="p19" df="1" beta="-18.0641192075215"/>
+   <PCell parameterName="p20" df="1" beta="-18.0291474107276"/>
+   <PCell parameterName="p21" df="1" beta="-17.5680438779241"/>
+   <PCell parameterName="p22" df="1" beta="-17.6064517429774"/>
+   <PCell parameterName="p23" df="1" beta="-5.81306284709798e-06"/>
+  </ParamMatrix>
+ </GeneralRegressionModel>
+</PMML>
