@@ -8,10 +8,23 @@ import java.util.List;
 
 public interface HelloServiceProf {
 
+    /**
+     * just show the in action service and its center
+     * @param name could be null
+     * @return the in action service and its center
+     */
     String sayHello(String name);
 
+    /**
+     * show all available models
+     * @return  all available models
+     */
     List<Model> ModelList();
 
+    /**
+     * run tree and return predicted results
+     * @return  predicted results
+     */
     List<Iris> irisTree(List<Iris> param);
 
     List<Audit> auditGLM(List<Audit> param);

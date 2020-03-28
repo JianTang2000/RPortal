@@ -1,5 +1,6 @@
 package com.tang.billing.demoprovider.serviceimpl;
 
+import com.tang.param.billing.Audit;
 import com.tang.param.billing.Iris;
 import com.tang.param.billing.Model;
 import org.slf4j.Logger;
@@ -12,20 +13,11 @@ import com.tang.api.profile.HelloServiceProf;
 
 import java.util.List;
 
-/**
- * < >
- */
 @Service("HelloService")
 public class OutAPIServiceImpl implements OutAPIService {
 
-    /**
-     * < 日志 >
-     */
     private Logger logger = LoggerFactory.getLogger(OutAPIServiceImpl.class);
 
-    /**
-     * < 其他中心的dubbo服务的注入 >
-     */
     @Autowired
     HelloServiceProf helloServiceProf;
 
@@ -51,7 +43,32 @@ public class OutAPIServiceImpl implements OutAPIService {
 
     @Override
     public List<Model> ModelList() {
-        return null;
+        return helloServiceProf.ModelList();
+    }
+
+    @Override
+    public List<Audit> auditGLM(List<Audit> param) {
+        return helloServiceProf.auditGLM(param);
+    }
+
+    @Override
+    public List<Iris> irisHcluster(List<Iris> param) {
+        return helloServiceProf.irisHcluster(param);
+    }
+
+    @Override
+    public List<Iris> irisRandomForest(List<Iris> param) {
+        return helloServiceProf.irisRandomForest(param);
+    }
+
+    @Override
+    public List<Iris> irisNnet(List<Iris> param) {
+        return helloServiceProf.irisNnet(param);
+    }
+
+    @Override
+    public List<Iris> irisSVM(List<Iris> param) {
+        return helloServiceProf.irisSVM(param);
     }
 
 

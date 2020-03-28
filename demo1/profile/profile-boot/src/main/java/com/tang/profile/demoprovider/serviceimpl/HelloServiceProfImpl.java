@@ -19,9 +19,6 @@ import java.util.Map;
 
 import com.tang.api.profile.HelloServiceProf;
 
-/**
- * < >
- */
 @Service("HelloServiceProf")
 public class HelloServiceProfImpl implements HelloServiceProf {
 

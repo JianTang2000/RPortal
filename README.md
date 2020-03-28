@@ -1,5 +1,3 @@
 # RPortal
-Experiences while integrating R and Java , there are 
-1 .Rfiles which Define the Predictive Model in R and Export as PMML;
-2 .java files which import PMML from 1 and provide APT to use these models ;
-3 configuration files for deploying (in docker);
+Integrating R and Java. Build models(rpart,GLM,Hcluster,RandomForest,SVM,nnet) by R, export as PMML, use these XML format models in JAVA to do prediction and provide restful API for prediction.
+

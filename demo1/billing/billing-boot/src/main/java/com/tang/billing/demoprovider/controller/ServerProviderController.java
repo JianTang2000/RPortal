@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.tang.api.billing.OutAPIService;
-import com.tang.base.util.BaseCommonUtil;
+import com.tang.param.billing.Audit;
 import com.tang.param.billing.Iris;
+import com.tang.param.billing.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,49 +24,74 @@ public class ServerProviderController {
     @Autowired
     OutAPIService outAPIService;
 
-    @PutMapping("randomForest/rpart")
-    public Map<String, Object> findAllEffKey() {
-        logger.info("start.");
-        List<String> result = null;
-        if (ValidateUtil.validateNotEmpty(result)) {
-            return Json.success(result);
-        }
-        else {
-            return Json.fail(result);
+    @PutMapping("RpartTree/iris")
+    public Map<String, Object> irisTree(List<Iris> param) {
+        List<Iris> ret = outAPIService.irisTree(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
         }
     }
 
-
-    //Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-    // 5.1         3.5          1.4         0.2     setosa
-    @PutMapping("irisTree/rpart")
-    public Map<String, Object> irisTree(List<Iris> param) {
-        logger.info("irisTree (based on rpart) start at {} (ms) ", System.currentTimeMillis());
-        logger.info("request input: ", BaseCommonUtil.objectToJsonString(param));
-        List<Iris> ret = outAPIService.irisTree(param);
-        List<String> result = null;
-        if (ValidateUtil.validateNotEmpty(result)) {
-            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
-            return Json.success(result);
+    @PutMapping("GLM/audit")
+    public Map<String, Object> auditGLM(List<Audit> param) {
+        List<Audit> ret = outAPIService.auditGLM(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
         }
-        else {
-            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
-            return Json.fail(result);
+    }
+
+    @PutMapping("Hcluster/iris")
+    public Map<String, Object> irisHcluster(List<Iris> param) {
+        List<Iris> ret = outAPIService.irisHcluster(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
+        }
+    }
+
+    @PutMapping("RandomForest/iris")
+    public Map<String, Object> irisRandomForest(List<Iris> param) {
+        List<Iris> ret = outAPIService.irisRandomForest(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
+        }
+    }
+
+    @PutMapping("Nnet/iris")
+    public Map<String, Object> irisNnet(List<Iris> param) {
+        List<Iris> ret = outAPIService.irisNnet(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
+        }
+    }
+
+    @PutMapping("SVM/iris")
+    public Map<String, Object> irisSVM(List<Iris> param) {
+        List<Iris> ret = outAPIService.irisSVM(param);
+        if (ValidateUtil.validateNotEmpty(ret)) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
         }
     }
 
     //return all existing model, and their API  detail
     @PutMapping("Model/List")
     public Map<String, Object> ModelList() {
-        logger.info("irisTree (based on rpart) start at {} (ms) ", System.currentTimeMillis());
-        List<String> result = null;
-        if (ValidateUtil.validateNotEmpty(result)) {
-            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
-            return Json.success(result);
-        }
-        else {
-            logger.info("irisTree (based on rpart) end at {} (ms) ", System.currentTimeMillis());
-            return Json.fail(result);
+        List<Model> ModelList = outAPIService.ModelList();
+        if (ValidateUtil.validateNotEmpty(ModelList)) {
+            return Json.success(ModelList);
+        } else {
+            return Json.fail(ModelList);
         }
     }
 
