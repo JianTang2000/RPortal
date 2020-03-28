@@ -3,7 +3,7 @@
  <Header copyright="Copyright (c) 2020 Kent" description="Generalized Linear Regression Model">
   <Extension name="user" value="Kent" extender="SoftwareAG PMML Generator"/>
   <Application name="SoftwareAG PMML Generator" version="2.3.0"/>
-  <Timestamp>2020-03-28 07:44:49</Timestamp>
+  <Timestamp>2020-03-28 08:16:40</Timestamp>
  </Header>
  <DataDictionary numberOfFields="5">
   <DataField name="Adjusted" optype="continuous" dataType="double"/>
