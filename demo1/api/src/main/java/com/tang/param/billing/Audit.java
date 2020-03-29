@@ -1,10 +1,12 @@
 package com.tang.param.billing;
 
+import java.io.Serializable;
+
 /**
  * @author tang
  * @Description: TODO
  */
-public class Audit {
+public class Audit implements Serializable {
     private static final long serialVersionUID = -1780491730241163150L;
     //mod <- glm(Adjusted ~ Age + Employment + Education + Income, data = audit, family = binomial(logit))
     private int Age;

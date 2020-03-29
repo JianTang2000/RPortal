@@ -1,10 +1,13 @@
 package com.tang.param.billing;
 
+import java.io.Serializable;
+
 /**
  * @author tang
  * @Description: TODO
  */
-public class Model {
+public class Model implements Serializable {
+
     private static final long serialVersionUID = -1780491730241163250L;
     private String modelDesc;
     private String formula;

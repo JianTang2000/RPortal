@@ -264,6 +264,9 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     @Override
     public List<Model> ModelList() {
+//        logger.info("========================================================\n" +
+//                "return all models :\n" +
+//                "========================================================");
         List<Model> ret = new ArrayList<>();
         Model model1 = new Model();
         model1.setModelDesc("Classification and Regression Trees — rpart");
