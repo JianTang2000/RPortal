@@ -402,7 +402,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
             audit1.setEducation("College");
             audit1.setEmployment("Private");
             audit1.setIncome(7568.23);
-            Object SP1 = evaluator.evaluate(AuditT0).get(Predicted_Species);
+            Object SP1 = evaluator.evaluate(AuditT1).get(Predicted_Adjusted);
 //            Map<FieldName, ?> result = evaluator.evaluate(AuditT1);
 //            Object SP1 = result.get(Predicted_Adjusted);
             audit1.setTARGET_Adjusted((Double) SP1);
