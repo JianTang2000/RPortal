@@ -1,8 +1,11 @@
 # RPortal
-Integrating R and Java. Build models(rpart,GLM,Hcluster,RandomForest,SVM,nnet) by R, export as PMML, use these XML format models in JAVA to do prediction and provide restful API.
-e.g.
-1: get http://127.0.0.1:8080/GLM/audit
-2: post http://127.0.0.1:8080/GLM/audit
+Integrating R and Java. Build models(rpart,GLM,Hcluster,RandomForest,SVM,nnet) by R, export as PMML, use these PMML in JAVA to do prediction and provide restful API. /n
+pmml is available in python too, decode XML by java or C++ whatever u like . this means Integrating python/R and Java/c++ are both possible
+## 
+### e.g.1 
+get http://127.0.0.1:8080/GLM/audit
+### e.g.2
+post http://127.0.0.1:8080/GLM/audit
 {
 	"requestDesc":"test",
 	"modelDesc":null,
