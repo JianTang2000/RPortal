@@ -23,12 +23,16 @@ import com.tang.api.profile.HelloServiceProf;
 public class HelloServiceProfImpl implements HelloServiceProf {
 
     static String dir = System.getProperty("user.dir");
-    static String IrisTreePath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\irisRpart.pmml";
-    static String AuditGLMPath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\auditGLM.pmml";
-    static String IrisHclustPath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\irisHclust.pmml";
-    static String IrisRandomForestPath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\irisRandomForest.pmml";
-    static String IrisNnetPath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\irisNnet.pmml";
-    static String IrisSVMPath = dir + "\\profile\\profile-boot\\src\\main\\resources\\extraData\\irisSVM.pmml";
+    static String Url = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+    static {
+        System.out.println(Url);
+    }
+    static String IrisTreePath = Url + "extraData\\irisRpart.pmml";
+    static String AuditGLMPath = Url + "extraData\\auditGLM.pmml";
+    static String IrisHclustPath = Url + "extraData\\irisHclust.pmml";
+    static String IrisRandomForestPath = Url + "extraData\\irisRandomForest.pmml";
+    static String IrisNnetPath = Url + "extraData\\irisNnet.pmml";
+    static String IrisSVMPath = Url + "extraData\\irisSVM.pmml";
 
     private static FieldName Predicted_Species = new FieldName("Predicted_Species");
     private static FieldName predictedValue = new FieldName("predictedValue");
@@ -90,11 +94,9 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(IrisTreePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        InputStream is=this.getClass().getResourceAsStream("/resource/res.txt");
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRpart.pmml");
+//            inputStream = new FileInputStream(IrisTreePath);
         if (inputStream == null) {
             new Exception();
         }
@@ -116,11 +118,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(AuditGLMPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\auditGLM.pmml");
+//            inputStream = new FileInputStream(AuditGLMPath);
         if (inputStream == null) {
             new Exception();
         }
@@ -142,11 +141,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(IrisHclustPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisHclust.pmml");
+//            inputStream = new FileInputStream(IrisHclustPath);
         if (inputStream == null) {
             new Exception();
         }
@@ -168,11 +164,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(IrisRandomForestPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRandomForest.pmml");
+//            inputStream = new FileInputStream(IrisRandomForestPath);
         if (inputStream == null) {
             new Exception();
         }
@@ -194,11 +187,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(IrisSVMPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisSVM.pmml");
+//            inputStream = new FileInputStream(IrisSVMPath);
         if (inputStream == null) {
             new Exception();
         }
@@ -220,11 +210,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(IrisNnetPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisNnet.pmml");
+//            inputStream = new FileInputStream(IrisNnetPath);
         if (inputStream == null) {
             new Exception();
         }
@@ -707,4 +694,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 //                List<Iris> ret = getIrises(auditList,pmmlGLM);
 ////        List<Iris> ret2 = getIrises(null,pmmlGLM);
 //    }
+public static void main(String[] args) {
+    System.out.println(Url);
+}
+
 }
