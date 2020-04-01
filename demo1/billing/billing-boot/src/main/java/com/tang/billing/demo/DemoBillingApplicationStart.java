@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
@@ -19,9 +21,14 @@ import org.springframework.context.annotation.ImportResource;
 @ComponentScan(basePackages = {
     "com.tang.billing.demoprovider","com.tang.base"
 })
-public class DemoBillingApplicationStart {
-    public static void main(String[] args) {
+public class DemoBillingApplicationStart extends SpringBootServletInitializer {
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(DemoBillingApplicationStart.class);
+    }
+
+    public static void main(String[] args) {
         /**
          * Logger.
          */
@@ -37,3 +44,4 @@ public class DemoBillingApplicationStart {
     }
 
 }
+
