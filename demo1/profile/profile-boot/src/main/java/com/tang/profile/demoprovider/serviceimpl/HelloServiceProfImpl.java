@@ -99,7 +99,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisRpart.pmml");
+                System.out.println("will open:"+ pmml_path + "/extraData/irisRpart.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/irisRpart.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -129,7 +130,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\auditGLM.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/auditGLM.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -159,7 +160,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisHclust.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/irisHclust.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -189,7 +190,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisRandomForest.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/irisRandomForest.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -219,7 +220,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisSVM.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/irisSVM.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -249,7 +250,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         InputStream inputStream = null;
         if (pmml_path != null) {
             try {
-                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisNnet.pmml");
+                inputStream = new FileInputStream(pmml_path + "/extraData/irisNnet.pmml");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
