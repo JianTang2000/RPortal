@@ -24,15 +24,14 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static String dir = System.getProperty("user.dir");
     static String Url = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-    static {
-        System.out.println(Url);
-    }
-    static String IrisTreePath = Url + "extraData\\irisRpart.pmml";
-    static String AuditGLMPath = Url + "extraData\\auditGLM.pmml";
-    static String IrisHclustPath = Url + "extraData\\irisHclust.pmml";
-    static String IrisRandomForestPath = Url + "extraData\\irisRandomForest.pmml";
-    static String IrisNnetPath = Url + "extraData\\irisNnet.pmml";
-    static String IrisSVMPath = Url + "extraData\\irisSVM.pmml";
+    static String pmml_path = System.getenv("pmml_path");
+
+//    static String IrisTreePath = Url + "extraData\\irisRpart.pmml";
+//    static String AuditGLMPath = Url + "extraData\\auditGLM.pmml";
+//    static String IrisHclustPath = Url + "extraData\\irisHclust.pmml";
+//    static String IrisRandomForestPath = Url + "extraData\\irisRandomForest.pmml";
+//    static String IrisNnetPath = Url + "extraData\\irisNnet.pmml";
+//    static String IrisSVMPath = Url + "extraData\\irisSVM.pmml";
 
     private static FieldName Predicted_Species = new FieldName("Predicted_Species");
     private static FieldName predictedValue = new FieldName("predictedValue");
@@ -52,12 +51,14 @@ public class HelloServiceProfImpl implements HelloServiceProf {
         IrisSetosa.put(new FieldName("Petal.Length"), 1.3);
         IrisSetosa.put(new FieldName("Petal.Width"), 0.3);
     }
+
     static {
         IrisVersicolor.put(new FieldName("Sepal.Length"), 6.0);
         IrisVersicolor.put(new FieldName("Sepal.Width"), 2.2);
         IrisVersicolor.put(new FieldName("Petal.Length"), 4.0);
         IrisVersicolor.put(new FieldName("Petal.Width"), 1.0);
     }
+
     static {
         IrisVirginica.put(new FieldName("Sepal.Length"), 5.8);
         IrisVirginica.put(new FieldName("Sepal.Width"), 2.7);
@@ -71,12 +72,14 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     private static Map<FieldName, Object> AuditT1 = new HashMap<>();
     private static Map<FieldName, Object> AuditT0 = new HashMap<>();
+
     static {
         AuditT1.put(new FieldName("Age"), 60);
         AuditT1.put(new FieldName("Employment"), "Private");
         AuditT1.put(new FieldName("Education"), "College");
         AuditT1.put(new FieldName("Income"), 7568.23);
     }
+
     static {
         AuditT0.put(new FieldName("Age"), 23);
         AuditT0.put(new FieldName("Employment"), "Private");
@@ -94,9 +97,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-//        InputStream is=this.getClass().getResourceAsStream("/resource/res.txt");
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRpart.pmml");
-//            inputStream = new FileInputStream(IrisTreePath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisRpart.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRpart.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -118,8 +127,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\auditGLM.pmml");
-//            inputStream = new FileInputStream(AuditGLMPath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\auditGLM.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\auditGLM.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -141,8 +157,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisHclust.pmml");
-//            inputStream = new FileInputStream(IrisHclustPath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisHclust.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisHclust.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -164,8 +187,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRandomForest.pmml");
-//            inputStream = new FileInputStream(IrisRandomForestPath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisRandomForest.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisRandomForest.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -187,8 +217,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisSVM.pmml");
-//            inputStream = new FileInputStream(IrisSVMPath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisSVM.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisSVM.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -210,8 +247,15 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 
     static {
         InputStream inputStream = null;
-        inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisNnet.pmml");
-//            inputStream = new FileInputStream(IrisNnetPath);
+        if (pmml_path != null) {
+            try {
+                inputStream = new FileInputStream(pmml_path + "\\extraData\\irisNnet.pmml");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("\\extraData\\irisNnet.pmml");
+        }
         if (inputStream == null) {
             new Exception();
         }
@@ -669,7 +713,7 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 //    }
 
 
-//    public static void main(String[] args) {
+    //    public static void main(String[] args) {
 ////        //5.4         3.9          1.3         0.4     setosa
 ////        List<Iris> rua = new ArrayList<>();
 ////        Iris iris1 = new Iris();
@@ -694,8 +738,8 @@ public class HelloServiceProfImpl implements HelloServiceProf {
 //                List<Iris> ret = getIrises(auditList,pmmlGLM);
 ////        List<Iris> ret2 = getIrises(null,pmmlGLM);
 //    }
-public static void main(String[] args) {
-    System.out.println(Url);
-}
+    public static void main(String[] args) {
+        System.out.println(Url);
+    }
 
 }
