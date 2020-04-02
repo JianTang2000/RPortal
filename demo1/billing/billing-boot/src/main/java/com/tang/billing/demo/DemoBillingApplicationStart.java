@@ -4,14 +4,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 //
-@SpringBootApplication
+//@SpringBootApplication
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class })
 // 定义dubbo服务配置文件的路径，多个用逗号分隔
 @ImportResource(locations = {
     "classpath*:dubbo/demo-billing-*.xml", "classpath*:applicationContext.xml"
@@ -21,12 +25,12 @@ import org.springframework.context.annotation.ImportResource;
 @ComponentScan(basePackages = {
     "com.tang.billing.demoprovider","com.tang.base"
 })
-public class DemoBillingApplicationStart extends SpringBootServletInitializer {
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(DemoBillingApplicationStart.class);
-    }
+//public class DemoBillingApplicationStart extends SpringBootServletInitializer {
+public class DemoBillingApplicationStart {
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(DemoBillingApplicationStart.class);
+//    }
 
     public static void main(String[] args) {
         /**
