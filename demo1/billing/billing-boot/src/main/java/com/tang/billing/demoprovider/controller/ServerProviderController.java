@@ -1,5 +1,6 @@
 package com.tang.billing.demoprovider.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,49 @@ public class ServerProviderController {
 
     @Autowired
     OutAPIService outAPIService;
+
+    @PutMapping("RpartTree/iris2")
+    public Map<String, Object> irisTree2(Iris param2) {
+        logger.info("RpartTree iris2 start, param is {}", BaseCommonUtil.objectToJsonString(param2));
+        if (null == param2) {
+            IrisSet ret = outAPIService.irisTree(null);
+            if (ret != null) {
+                return Json.success(ret);
+            } else {
+                return Json.fail(ret);
+            }
+        }
+        List<Iris> param = new ArrayList<>();
+        param.add(param2);
+        IrisSet ret = outAPIService.irisTree(param);
+        if (ret != null) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
+        }
+    }
+
+    @PutMapping("GLM/audit2")
+    public Map<String, Object> auditGLM2(Audit param2) {
+        logger.info("auditGLM2  start, param is {}", BaseCommonUtil.objectToJsonString(param2));
+        if (null == param2) {
+            AuditSet ret = outAPIService.auditGLM(null);
+            if (ret != null) {
+                return Json.success(ret);
+            } else {
+                return Json.fail(ret);
+            }
+        }
+        List<Audit> param = new ArrayList<>();
+        param.add(param2);
+        AuditSet ret = outAPIService.auditGLM(param);
+        if (ret != null) {
+            return Json.success(ret);
+        } else {
+            return Json.fail(ret);
+        }
+    }
+
 
     @PostMapping("RpartTree/iris")
     public Map<String, Object> irisTree(@RequestBody IrisSet param) {
@@ -54,14 +98,13 @@ public class ServerProviderController {
      * http://127.0.0.1:8080/GLM/audit
      * an example for jason
      * {
-     * 	"requestDesc":"test",
-     * 	"modelDesc":null,
-     * 	"defaultData":null,
-     * 	"auditList":[
-     *        {"age":74,"education":"HSgrad","income":33144.40,"employment":"Private","target_Adjusted":0.0},
-     *    {"age":42,"education":"College","income":66139.36,"employment":"PSState","target_Adjusted":0.0}]
+     * "requestDesc":"test",
+     * "modelDesc":null,
+     * "defaultData":null,
+     * "auditList":[
+     * {"age":74,"education":"HSgrad","income":33144.40,"employment":"Private","target_Adjusted":0.0},
+     * {"age":42,"education":"College","income":66139.36,"employment":"PSState","target_Adjusted":0.0}]
      * }
-     *
      */
     @PostMapping("GLM/audit")
     public Map<String, Object> auditGLM(@RequestBody AuditSet param) {
