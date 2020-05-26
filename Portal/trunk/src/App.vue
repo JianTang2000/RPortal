@@ -51,51 +51,41 @@
 
                         <el-collapse-item name="0">
                             <template slot="title">
-                                <h2>Integration between R and other languages</h2>
+                                <h2>A PMML Based Framework for Developing R-Java Analytic Applications</h2>
                             </template>
                             <div>welcome to here~</div>
-                            <div>This is a website to show JianTang's MTHM007 （Engaging With Research） term2 project.
+                            <div>The process of building R-Java analytic applications presents challenges such as data wrangling, integrating and model presentation. In this paper, four R and Java integration methods and related scenarios are summarized.
                             </div>
-                            <div>The topic is "integration between R and other languages"</div>
-                            <div>There are examples (click the "Examples" in the bottom) and Github link (click the
-                                "gitHub Link" above)
+                            <div>A Predictive Modeling Markup Language (PMML) standard based framework that allows independent R model producers and Java consumers is presented.</div>
+                            <div>A demo to show the lifecycle of developing and deploying a R-Java analytic application based on this framework is also presented.</div>
+                            <div>click the "Examples" in the bottom and Github link click the
+                                "gitHub Link" above
                             </div>
                         </el-collapse-item>
 
                         <el-collapse-item name="1">
                             <template slot="title">
-                                <h2>Abstract</h2>
+                                <h2>Introduction</h2>
                             </template>
-                            <div>R is very powerful for data analysis and visualization, but in software engineering
-                                other languages such
-                                as c++ and java maybe more popular.
+                            <div>R is very powerful in data analysis and visualization, but in software engineering languages such as C++ and java are more popular. By R-Java analytic application we mean an application coded by R and Java that can analyze historical data, extract the potential meaning and give prediction to the new coming data. Examples include a website or a smartphone APP.
                             </div>
-                            <div>Image the case where we want to use R to analyze our data, and use the analysis results
-                                (suck as ggplot2 graph, a predictive model defined in R) in our c++ /java coded
-                                application (this website is exactly such a case), the
-                                integration between R and other languages will be inevitable.
+                            <div>R data analysis has outputs come in a variety of formats, such as plots and analytic models. By integration we mean plugging in these analytic results into other language coded software project, this integration can be implemented in various ways. The goal here is to find ways that can implement the integration between R and Java. More greedy speaking, we want they fast, stable, easy to understand and implement in related scenarios.
                             </div>
                             <div>
-                                Our goal here is to find ways that can implement this integration. More greedy speaking,
-                                we want they fast, stable, easy to understand and use.
+                                In this paper several integration methods and their applicable scenarios are listed. The explanation, usage, merits and demerits for each method are summarized.
                             </div>
-                            <div>In this page I will introduce several ways for implementing this integration
-                                (between R&java mostly), how they work,what's the requirements, merits and demerits.
+                            <div>The Streaming Machine Learning Architecture proposed by Oracle (Arango, Mauricio and Alex, 2016) allows model building based on Oracle R Enterprise (ORE) and model presentation based on Oracle Stream Explorer (OSX). The Predictive Modeling Markup Language (PMML) standard (Guazzelli, Alex, et al, 2009) is used to transfer information from ORE to OSX. However, too much reliance on the Oracle products makes this architecture too heavy to implement, a PMML based framework for building analytic application is presented here, it has much lighter weight and allows independent R model producers and consumers, many machine learning algorithms are well supported.
                             </div>
-                            <div>What's more, this website was built by using pmml, there will be an
-                                operable area (bottom) to show how it works.
-                            </div>
-                            <div>Finally, there will be a summary (in the bottom), as a cheat sheet in case u need to
-                                choose an integration method.
+                            <div>A demo to show the complete lifecycle of developing and deploying a R-Java analytic application based on this PMML framework is presented. The source code is available on GitHub and an accessible website provided by this demo is also shown.
                             </div>
                         </el-collapse-item>
 
                         <el-collapse-item name="2">
                             <template slot="title">
-                                <h2>Optional methods</h2>
+                                <h2>Optional Integration methods</h2>
                             </template>
                             <div><h3>1. Using R in java (and vice versa)</h3></div>
-                            <div><h3>2. Using DB or file as bridge</h3></div>
+                            <div><h3>2. Using DB or files</h3></div>
                             <div><h3>3. Using HTTP API in R</h3></div>
                             <div><h3>4. Using PMML</h3></div>
                         </el-collapse-item>
@@ -104,126 +94,46 @@
                             <template slot="title">
                                 <h2>1. Using R in java (and vice versa)</h2>
                             </template>
-                            <div>This means coding R code in you Java project, or coding java code in you R project.
-                                We can implement this by using “JRI” or “RServe”.
+                            <div>This means coding R code in Java project, or coding java code in R project. We can implement this by using RServe (Urbanek, Simon, 2003) or JRI (Urbanek, Simon, 2011). RServe and JRI are well used in many R-java integrated projects. Programmers are required to master both R and Java to start work.
                             </div>
-                            <div> “JRI” and “RServe” are well used in
-                                many R-java integrated project. However, I don’t really recommend to
-                                use them because programmers have to master both R and Java, I think this
-                                is too much to ask.
+                            <div><h3>RServe.</h3></div>
+                            <div>Rserve is a TCP/IP server. It works in Client/Server mode, the client side supports various programming languages such as Java, C++ and PHP. The client side can get R responses back by sending raw R code or R files to the server without the need to install any R environment setting. Authentication and session control are also supported. </div>
+                            <div>Rserve is easy to start since there is no need to any R setting in client side. But using RServe means we need to build a client/server system, and it’s based on TCP/IP, running slower than JRI because more time will be spent in network communication.</div>
+                            <div><h3>JRI.</h3></div>
+                            <div>JRI is a Java/R interface. It can be used to support the single-threaded running of raw R codes inside Java applications, JRI is the inverse of rJava (Urbanek, Simon, 2013) where we can run java code in R project. The basic idea behind JRI is to load required R libraries into Java environments and roll, calls to R function and running REPL(Read–eval–print loop) are supported.
                             </div>
-                            <div><h3>JRI:</h3></div>
-                            <div><h4>What is JRI? </h4>
-                                JRI is really old, it is a Java/R Interface, which allows to run R inside Java
-                                applications as a single thread. Basically it loads R dynamic library into Java and
-                                provides a Java API to R functionality. It supports both simple calls to R functions and
-                                a full running REPL(Read–eval–print loop). It is the inverse of rJava (where u can run
-                                java code in R project).
-                            </div>
-                            <div><h4>Cons:</h4> you have to configure some environment variables and libraries,
-                                different in Win/UNIX.
-                            </div>
-                            <div><h4>Pros:</h4> better performance than “RServe”(see below)</div>
-                            <div><h3>RServe:</h3></div>
-                            <div><h4>What is RServe?</h4> What is RServe? Rserve is a TCP/IP server which allows other
-                                programs to use facilities of R from various languages (such as C/C++, PHP and Java)
-                                without the need to initialize R or link against R library. In another word, for example
-                                in java, u can write R code in your java project, send it to Rserve, and get the R code
-                                outputs back.
-                            </div>
-                            <div><h4>Cons:</h4> using RServe means u need to build a client/server system, and it’s
-                                based on TCP/IP, slower than JRI (more time will be spent in network communication),
-                            </div>
-                            <div><h4>Pros:</h4> easy to setup, you don't need to initialize R or link against any R
-                                library, can run in a different machine.
-                            </div>
+                            <div>JRI requires more complex environment setting and this can vary from different operating systems. But it’s an inner Java operation which means better running performance.</div>
                         </el-collapse-item>
 
                         <el-collapse-item name="4">
                             <template slot="title">
                                 <h2>2. Using DB or file as bridge</h2>
                             </template>
-                            <div>DB here means database, such as mySQL or Oracle. There is really no more terms to
-                                explain. This way is so easy to understand: we can just save the R results to DB or
-                                local files, and then read them into other applications.
-                            </div>
-                            <div>Using files as bridge seems to be the simplest way for integration, it’s suitable for
-                                small size data. However, the performance and stability can be the problems when facing
-                                with large size data or high-concurrency scenario.
-                            </div>
-                            <div><h4>Pros:</h4> easy to understand and use. What’s more, this integration method
-                                is separable, by separable it means the job can be divided into two parts (R and java),
-                                the programmers in each part don’t have to master both R and Java. Different parts can
-                                be done by different programmers and then combined through DB or local files.
-                            </div>
-                            <div><h4>Cons:</h4> if the dataset is large, too much I/O operations will be unacceptable,
-                                it will slow down the running performance, more memories are required for saving, and
-                                more likely to lead to bugs in high-concurrency scenario.
-                            </div>
+                            <div>By DB here we mean database, such as MySQL and Oracle. This way is easy to start: we can just save the R results to DB or local files, and then read them into other language coded applications. R package RMySQ (James, David, and Saikat, 2012) can be used to provide R interface to the MySQL database. And a variety of file formats, for example, .txt, .csv, .png , are well supported by R.</div>
+                            <div>Using DB or files as bridge is an intuitive way and easy to start, R outputs such as plots and numbers can be well transmitted without misunderstanding. However, R outputs such as analytic models have the format that other language can never understand and use directly without specific interpreter. Besides, too much I/O operation presents the challenge to running performance and stability when facing with large size data or high-concurrency scenario.</div>
                         </el-collapse-item>
 
                         <el-collapse-item name="5">
                             <template slot="title">
                                 <h2>3. Using HTTP API in R</h2>
                             </template>
-                            <div>HTTP(REST) API has become a common way for allowing various systems to interact with
-                                one another. We can create HTTP APIs in R with "Plumber", then other systems can use our
-                                R code by using these APIs.
-                            </div>
-                            <div>HTTP API is so popular hence i believe Plumber should be the best default method for R
-                                integration. It can be used to provide rich R inputs/outputs formats such as Jason
-                                strings, HTML, PNG, or JPEG. But in some special cases PMML(see below) will do better.
-                            </div>
-                            <div><h4>What is Plumber? </h4>
-                                The plumber R package (Trestle Technology, LLC 2017) allows users to expose existing R
-                                code as a service available to others on the Web. (Note that in Rserve we send raw R
-                                code to a server and get response, but here we send API parameters, which means users
-                                don’t need master R)We can do this by merely decorating our existing R code with special
-                                annotations (annotations, amazing!). The API will use port 8000(default) and will
-                                continue running in your R session until you press the Esc key.
-                            </div>
-                            <div><h4>Pros:</h4> HTTP APIs are so popular hence this might be the most acceptable way for
-                                integration. It is easy to understand and use (as long as users are familiar with the
-                                API), users don’t need to master both R and other languages, rich inputs/outputs formats
-                                such as Jason strings, HTML, PNG, or JPEG.
-                            </div>
-                            <div><h4>Cons:</h4> using too much REST API will slow down the running performance (more
-                                time will be spent in network communication), This is not a good choice for
-                                time-sensitive systems. Plus we need to maintain this R service.
-                            </div>
+                            <div>This means exposing R codes as services in the HTTP (or REST) API format available on the Internet. The Hypertext Transfer Protocol (HTTP) API has become the predominant standard for helping different language coded systems to talk to each other. We can create HTTP APIs in R with package Plumber (Cran.R-Project.Org plumber, 2020), so as to our R codes dressed as services can communicate with other systems as long as they are in the same subnet, or public Internet.</div>
+                            <div>HTTP API provides rich inputs and outputs formats such as Jason strings, HTML, PNG, or JPEG. R package Plumber helps user to build web API by merely adding special annotations above the normal R function, no more special editing for the R function body or definition is needed. These R functions will be exposed as Web APIs automatically. The APIs will use default port 8000 and will continue running in the R session until an Esc command is triggered.</div>
+                            <div>No function definition or body editing is need, but the Plumber API does require specific annotation formats, we can use either #* or # ':</div>
+                            <div>	#' @param a. This specifies the input parameter name for the function</div>
+                            <div>	#' @get /echo. This specifies the function as a @get request, and echoes the message passed in. Other request types @post, @put, @delete, @head are also supported.</div>
+                            <div>	#' @png. This specifies the output of the function is an image. Other formats such as @html, @jpeg are also supported.</div>
+                            <div>Plumber API is easy to start, what we need is to decorate our normal R function with some special annotations, and Plumber will do the rest, such as port setting and routing, and of course we can change these default setting manually. Then our R function will be available online before we know it. Just like Rserve, more time will be spent in network communication if we call too much web APIs in our system. The difference between Plumber and Rserve is that in Rserve we send raw R code to a serve and get response, but in Plumber we send API parameters, which means users don’t need master R.</div>
                         </el-collapse-item>
 
                         <el-collapse-item name="6">
                             <template slot="title">
                                 <h2>4. Using PMML</h2>
                             </template>
-                            <div>First I want to state the integration between R&java behind this website is done by
-                                using PMML.
-                            </div>
-                            <div>In the case where we want build predictive and descriptive models (such as GLM,
-                                Hcluster, SVM random forest, nnet…) in R and use these models in other language coded
-                                system, we can use PMML as bridge.
-                            </div>
-                            <div>If the integration context is about producing and Consuming predictive and descriptive
-                                models, and they are supported by PMLL, then PMLL is a safer and more efficient way.
-                            </div>
-                            <div><h4>What is PMML? </h4>
-                                The goal of PMML is to encapsulate in an application and system independent fashion a
-                                model so that two different applications (the PMML Producer, such as R or Python, and
-                                Consumer, such as Java and C++) can use it.
-                            </div>
-                            <div>The PMML package in R (the PMML Producer) exports a variety of predictive and
-                                descriptive models from R to the Predictive Model Markup Language. And JPMML (the PMML
-                                Consumer) is one of the Java libraries for consuming these PMML documents
-                            </div>
-                            <div><h4>Pros:</h4> inner system, pure Java /C++, there is not network communication or
-                                R/python code running, so it is fast and stable when facing with large size data or
-                                high-concurrency scenario.
-                            </div>
-                            <div><h4>Cons:</h4>pmml doesn’t support exporting everything (it supports predictive and
-                                descriptive models, for more detail please see the PMML doc). For example If we can’t
-                                export ggplot graphs.
-                            </div>
+                            <div>In the case where we need build predictive and descriptive models, such as GLM, Hclust, SVM, randomForest, nnet, in the generator side by using R or python, and consume these models in other language coded system such as Java or C++, we can use PMML as bridge. </div>
+                            <div>The goal of PMML is to rise a standard for wrapping models so that two different sides, one called the PMML producer, one called consumer, can work together (Ferrucci, et al, 2006). Package PMML in R allows user to export a variety of analytic models and necessary datasets from R to .pmml files in the producer side. These files use XML schema defined by PMML to describe the model structure. Then consumer side, commonly coded by other languages and running in environments without any R setting, can import these .pmml files and do presentation with the help with specific evaluator. JPMML (Java PMML API, 2020) is an open source Java library that provides interfaces to run this PMML interpretation.</div>
+                            <div>The PMML generator and consumer can be linked by static .pmml files, so as to in the consumer side no network communication or R/python code running is required, the inner system operation, pure Java, makes it possible for a fast and stable running performance when facing with large size data or high-concurrency scenario. </div>
+                            <div>Outputs such as plots are not supported by PMML, but if the integration context is about producing and consuming predictive and descriptive models, and they are supported by PMLL, PMLL is a safer and more efficient way. </div>
                         </el-collapse-item>
 
                         <!--                        summary table-->
@@ -253,9 +163,112 @@
                             </template>
                         </el-collapse-item>
 
+                        <el-collapse-item name="8">
+                            <template slot="title">
+                                <h2>A PMML based framework</h2>
+                            </template>
+                            <div>The Streaming Machine Learning Architecture proposed by Oracle supports the separable, fashion independent components in model development and building based on Oracle R Enterprise (ORE) and model presentation based on Oracle Stream Explorer (OSX). PMML in this framework is used to transfer models from ORE to OSX, and special PMML evaluator in OSX is needed for preprocessing, model import and scoring. Since too much reliance on the Oracle products makes this architecture too heavy to implement, based on this ideal a PMML based framework for building analytic application is proposed here, it’s much lighter and allows independent R model producers and consumers. </div>
+                            <div>The PMML framework involves two main stages:</div>
+                            <div><h3>Model Training.</h3></div>
+                            <div>Use structured or semi-structured data as input, necessary data cleaning and
+                                preparing is required.</div>
+                            <div>Large dataset processing may be required.</div>
+                            <div>A variety of machine learning algorithms should be supported.</div>
+                            <div>Processing with low frequency.</div>
+
+                            <div><h3>Model Scoring.</h3></div>
+                            <div>Contains all scoring information and provides interfaces to handle input streaming
+                                data directly.</div>
+                            <div>Supports automatic and manual model refresh.</div>
+                            <div>Processing with high frequency.</div>
+
+                            <div><h3>The PMML framework allows the following step-to-step workflow:</h3></div>
+                            <div>Model generation. Using structured or semi-structured data as input to build analytic
+                                models. The training can be triggered automatically or manually. R environment setting
+                                and related R libraries are need, data wrangling and preparing is required. Machine
+                                learning algorithms supported by PMML can be accessed by checking the latest R
+                                PMML package doc.</div>
+                            <div>Model export by PMML standard. PMML package in R allows to export models to
+                                xml format .pmml files. All necessary scoring information and datasets are included.
+                            </div>
+                            <div>Model storage. Model files can be stored as static files or file stream in self-defined
+                                memories. Database is not necessary since the model building process is in low
+                                frequency. Triggers for model refresh is supported.</div>
+                            <div>Model import and scoring function creating. The PMML evaluator JPMML is need
+                                .to help importing PMML files or file stream and scoring interfaces design. A desirable
+                                maven dependency version can be org.jpmml pmml-evaluator 1.4.6.</div>
+                            <div>JPMML provides common model evaluator Java class, but the consumer interfaces can
+                                still vary due to the training models can be built by using a variety of algorithms or
+                                datasets. This means semi-automatic scoring interfaces can be generated, all we need is
+                                to specific parameter names or other necessary formats.</div>
+                            <div>Exposing and consuming. In this part exposed scoring functions and visual interfaces
+                                such as a web portal is generated. Java functions can be exposed as web APIs by using
+                                Spring-boot (Walls, Craig, 2016) to support the integration with web programming
+                                languages such as Javascript, or Dubbo servers (Apache Dubbo, 2020) as plugins in
+                                distributed systems. And visualization such as a website can be built by calling these
+                                servers</div>
+                        </el-collapse-item>
+
+                        <el-collapse-item name="9">
+                            <template slot="title">
+                                <h2>Building Applications Using the PMML framework
+                                </h2>
+                            </template>
+                            <div>The PMML framework provides an end-to-end workflow and implementation for each
+                                component. In this section an example of developing and deploying analytic application
+                                based on this framework is presented.</div>
+
+                            <div><h3>This demo application has the following components:</h3></div>
+                            <div>Model producer in R. 6 machine learning models rpart, glm, hclust, SVM, nnet,
+                                randomForest are built by using dataset “iris” or “audit”, Models are exported as
+                                PMML format files. No database is used.</div>
+                            <div>fit <- rpart(Species ~ ., data = iris)</div>
+                            <div>saveXML(pmml(fit), ".//R//irisRpart.pmml")</div>
+                            <div>mod <- glm(TARGET_Adjusted ~ Age + Employment + Education + Income,data = audit, family = binomial(logit)) </div>
+                            <div>saveXML(pmml(mod), ".//R//auditGLM.pmml")</div>
+                            <div>Scoring in Java. An optional maven dependency used for JPMML is 1.4.6.
+                            </div>
+                            <div>Semi-automatic scoring interfaces are generated by JPMML. The model evaluator class
+                                will load model files defined by model producer into JVM and no file reading
+                                processing is need during the high frequency scoring unless a model refresh is triggered.</div>
+                            <div>Scoring interfaces accept input data stream and give prediction output stream by using
+                                class evaluator defined above, input parameter formats can be determined by checking
+                                the model predictor variables information</div>
+                            <div>Exposing. The scoring functions are exposed as Web APIs and Dubbo servers available
+                                externally. Web APIs is created by Spring-boot and consumed by the web portal. Dubbo
+                                servers is created by Dubbo to work as plugins in the distributed system to provide high-performance function call. For the full code detail please check the GitHub link
+                                https://github.com/JianTang2000/RPortal.</div>
+                            <div>Web. A website is built for model introduction and operation such as model refresh and
+                                prediction. The web is built by using VUE (Macrae, Callum, 2018) and ElementUI
+                                (Element, 2020). The following web screenshots show how to input predictor variables
+                                and get prediction in the “audit” dataset, glm scenario and the “iris” dataset, rpart
+                                scenario.</div>
+                            <div>Deployment. This application is deployed on the Google Cloud Platform (Krishnan,
+                                Jose, 2015). A quick setup simply includes public network, static IP address, SSH tunnel,
+                                centos OS 7 operating system, Java environment setting, Dubbo environment setting
+                                and node.js environment setting. Most of them are well supported by the Google Cloud
+                                Platform so the deployment is easy to be done. An accessible address is
+                                http://35.189.127.74:8110. This website will keep running and be available on the
+                                Internet as long as the associated Google resources are not released.</div>
+
+                        </el-collapse-item>
+
+
+                        <el-collapse-item name="10">
+                            <template slot="title">
+                                <h2>Conclusion</h2>
+                            </template>
+                            <div>In this paper, we have summarized 4 methods to implement the R-Java integration and
+                                their related scenarios. We have presented a light weight, Predictive Modeling Markup
+                                Language (PMML) standard based framework, it allows independent R model
+                                producers and consumers. We have also shown the development and deployment of a
+                                demo analytic application based on the PMML framework.
+                            </div>
+                        </el-collapse-item>
+
 
                         <!--                        example-->
-                        <el-collapse-item name="8">
+                        <el-collapse-item name="11">
                             <template slot="title">
                                 <h2>Examples</h2>
                             </template>
@@ -426,6 +439,44 @@
                             </el-row>
 
                         </el-collapse-item>
+
+                        <el-collapse-item name="12">
+                            <template slot="title">
+                                <h2>References</h2>
+                            </template>
+                            <div>Arango, Mauricio, and Alex Ardel. "Machine Learning on Streaming Data via
+                                Integration of Oracle Advanced Analytics and Oracle Stream Explorer." (2016).</div>
+                            <div>Guazzelli, Alex, et al. "PMML: An open standard for sharing models." The R Journal
+                                1.1 (2009): 60-65.</div>
+                            <div>Urbanek, Simon. "Rserve--a fast way to provide R functionality to applications." PROC.
+                                OF THE 3RD INTERNATIONAL WORKSHOP ON DISTRIBUTED
+                                STATISTICAL COMPUTING (DSC 2003), ISSN 1609-395X, EDS.: KURT
+                                HORNIK, FRIEDRICH LEISCH & ACHIM ZEILEIS, 2003
+                                (HTTP://ROSUDA. ORG/RSERVE. 2003.</div>
+                            <div>Urbanek, Simon. "JRI: Java-R Interface." URL http://www. rforge. net/JRI/index. html
+                                (2011).</div>
+                            <div>Urbanek, Simon. "rJava: Low-level R to Java interface." (2013).</div>
+                            <div>James, David A., and Saikat DebRoy. "RMySQL: R interface to the MySQL database."
+                                R package version 0.9-3 (2012).</div>
+                            <div>Cran.R-Project.Org, 2020, https://cran.r-project.org/web/packages/plumber/plumber.
+                                pdf. </div>
+                            <div>Ferrucci, David, Robert L. Grossman, and Anthony Levas. "PMML and UIMA based
+                                frameworks for deploying analytic applications and services." Proceedings of
+                                the 4th international workshop on Data mining standards, services and
+                                platforms. 2006.</div>
+                            <div>"Java PMML API". Github, 2020, https://github.com/jpmml.</div>
+                            <div>Cran.R-Project.Org, 2020, https://cran.r-project.org/web/packages/pmml/pmml.pdf</div>
+                            <div>Walls, Craig. Spring Boot in action. Manning Publications, 2016.</div>
+                            <div>"Apache/Dubbo". Github, 2020, https://github.com/apache/dubbo.</div>
+                            <div>Macrae, Callum. Vue. js: Up and Running: Building Accessible and Performant Web
+                                Apps. " O'Reilly Media, Inc.", 2018.
+                            </div>
+                            <div>"Element - The World's Most Popular Vue UI Framework". Element.Eleme.Io, 2020,
+                                https://element.eleme.io/#/en-US.</div>
+                            <div>Krishnan, S. P. T., and Jose L. Ugia Gonzalez. Building your next big thing with google
+                                cloud platform: A guide for developers and enterprise architects. Apress, 2015.</div>
+                        </el-collapse-item>
+
                     </el-collapse>
 
                     <br><br><br><br><br><br><br>
