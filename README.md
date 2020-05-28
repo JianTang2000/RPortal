@@ -1,6 +1,6 @@
 # what is this :
 Integrating R and Java by pmml.  
-Part 1, run R models in RStudio;  
+Part 1, train R models in R;  
 Part 2, Build java servers(2 servers), use models(from Part1) to do prediction and provide restful API.  
 Part 3, Deploy the servers on the Google cloud.
 # key words :
